@@ -325,7 +325,7 @@ def hitung_tampilan_peta(gdf_sub):
 # =========================================================
 # KONFIGURASI & FUNGSI TOPIK 2: BERHIERARKI
 # =========================================================
-DATA_DIR = Path(r"C:\Users\taura\Downloads\UAS VISDAT\Data")
+DATA_DIR = Path(__file__).resolve().parent / "Data"
 # Untuk deploy, ganti menjadi: DATA_DIR = Path(__file__).resolve().parent / "Data"
 TAHUN_PDB = [2020, 2021, 2022, 2023, 2024]
 FILE_GROWTH = DATA_DIR / "pertumbuhan_pdb_adhk2010_2020_2024.csv"
@@ -487,7 +487,7 @@ def buat_figure_hier(d, representasi, tahun, batas):
 # =========================================================
 # KONFIGURASI & FUNGSI TOPIK 3: ALIRAN / FLOW
 # =========================================================
-CSV_MIGRASI = Path(r"C:\Users\taura\Downloads\UAS VISDAT\Data\migrasi_risen_wide.csv")
+CSV_MIGRASI = Path(__file__).resolve().parent / "Data" / "migrasi_risen_wide.csv"
 
 
 @st.cache_data
