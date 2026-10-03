@@ -1,0 +1,298 @@
+:root {
+    --bps-navy: #0A3161;
+    --bps-navy-light: #15468C;
+    --bps-orange: #F7941D;
+    --bps-orange-dark: #D97706;
+}
+
+/* Header atas (toolbar Streamlit) -- aksen navy BPS */
+[data-testid="stHeader"] {
+    background-color: var(--bps-navy);
+}
+
+/* Sidebar tetap navy -- logo & info menonjol */
+[data-testid="stSidebar"] {
+    background-color: var(--bps-navy);
+}
+[data-testid="stSidebar"] * {
+    color: #FFFFFF !important;
+}
+
+/* Judul utama: tetap di tema gelap, aksen garis bawah orange */
+h1 {
+    font-weight: 800 !important;
+    padding-top: 0 !important;
+}
+h1::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    margin-top: 0.5rem;
+    background: var(--bps-orange);
+    border-radius: 2px;
+}
+
+h2, h3, h4 {
+    padding-left: 1rem;
+}
+
+/* Jaga agar judul tidak ketiban header saat anchor-scroll */
+h1, h2, h3, h4, [data-testid="stHeadingWithActionElements"] {
+    scroll-margin-top: 90px;
+}
+
+/* Tab: list navy, tab aktif orange -- konsisten di tema apa pun */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    width: 100%;
+    background-color: var(--bps-navy);
+    padding: 6px 6px 0 6px;
+    border-radius: 10px 10px 0 0;
+}
+.stTabs [data-baseweb="tab"] {
+    flex: 1 1 0;                  /* tiga tab membagi lebar bar biru secara rata */
+    justify-content: center;
+    text-align: center;
+    color: #E8EEF6;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 18px;
+}
+.stTabs [data-baseweb="tab"] p {
+    font-size: 1.05rem;
+}
+/* Tab aktif: tanpa latar oranye, hanya teks putih tebal */
+.stTabs [aria-selected="true"] {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+    font-weight: 700;
+}
+/* Garis indikator tab aktif: oranye, sedikit lebih tebal agar jelas */
+.stTabs [data-baseweb="tab-highlight"] {
+    background-color: var(--bps-orange) !important;
+    height: 4px;
+}
+/* Garis tipis di bawah bar: sembunyikan */
+.stTabs [data-baseweb="tab-border"] {
+    background-color: transparent !important;
+}
+
+/* Kartu metrik: aksen kiri orange, tanpa paksa warna latar/teks */
+[data-testid="stMetric"] {
+    border-left: 5px solid var(--bps-orange);
+    border-radius: 10px;
+    padding: 12px 16px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+[data-testid="stMetric"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(247,148,29,0.25);
+}
+
+/* Tombol: tetap orange solid, aman di tema terang maupun gelap */
+div.stButton > button, div.stDownloadButton > button {
+    background-color: var(--bps-orange);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.15s ease;
+}
+div.stButton > button:hover, div.stDownloadButton > button:hover {
+    background-color: var(--bps-orange-dark);
+    color: white;
+}
+
+/* Kotak info/warning: aksen kiri orange */
+[data-testid="stNotification"] {
+    border-left: 5px solid var(--bps-orange);
+    border-radius: 8px;
+}
+
+/* Link di footer pakai warna orange, bukan biru default browser */
+a {
+    color: var(--bps-orange) !important;
+}
+a:hover {
+    color: var(--bps-orange-dark) !important;
+}
+
+/* Rapatkan ruang kosong di atas judul dan di bawah footer */
+[data-testid="stMainBlockContainer"],
+.block-container {
+    padding-top: 3rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+/* Scroll halus + tombol kembali ke atas (CSS murni, tanpa iframe) */
+[data-testid="stMain"] {
+    scroll-behavior: smooth;
+}
+a.to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: var(--bps-orange);
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+a.to-top:hover {
+    background-color: var(--bps-orange-dark);
+    color: #FFFFFF !important;
+}
+
+/* Latar halaman: gradien navy gelap dengan semburat oranye di pojok kanan atas */
+.stApp, [data-testid="stApp"] {
+    background:
+        radial-gradient(circle at 90% 0%, rgba(247,148,29,0.14) 0%, transparent 38%),
+        linear-gradient(160deg, #0F2A4F 0%, #0B1D36 45%, #0A1426 100%);
+    background-attachment: fixed;
+}
+
+/* =========================================================
+   RESPONSIF PONSEL (layar <= 768px). Tampilan komputer tidak berubah.
+   ========================================================= */
+@media (max-width: 768px) {
+    [data-testid="stMainBlockContainer"],
+    .block-container {
+        padding-top: 2.5rem !important;
+        padding-left: 0.9rem !important;
+        padding-right: 0.9rem !important;
+    }
+
+    h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+    h2, h3 { font-size: 1.15rem !important; }
+    h4, h5 { font-size: 1rem !important; }
+    h2, h3, h4 { padding-left: 0.2rem; }
+
+    /* Tab: tidak dipaksa sama lebar, boleh digeser horizontal */
+    .stTabs [data-baseweb="tab-list"] {
+        overflow-x: auto;
+        gap: 2px;
+        padding: 4px 4px 0 4px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+    }
+    .stTabs [data-baseweb="tab"] p {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    /* Kartu KPI lebih ringkas */
+    [data-testid="stMetric"] { padding: 8px 12px; }
+    [data-testid="stMetricValue"] { font-size: 1.35rem; }
+    [data-testid="stMetricLabel"] p { font-size: 0.8rem; }
+
+    /* Rata kanan-kiri diganti rata kiri agar tidak renggang di layar sempit */
+    .rata-kk, .rata-kk li, .rata-kk p,
+    div[style*="text-align: justify"] {
+        text-align: left !important;
+    }
+
+    /* Tabel markdown (Home > Sumber Data) bisa digeser horizontal */
+    [data-testid="stMarkdownContainer"] table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* Tombol kembali ke atas lebih kecil */
+    a.to-top {
+        width: 40px; height: 40px; line-height: 40px;
+        font-size: 18px; bottom: 16px; right: 16px;
+    }
+
+    /* ---------- Tambahan penyempurnaan ponsel ---------- */
+
+    /* Halaman tidak boleh bergeser ke samping */
+    [data-testid="stMain"],
+    [data-testid="stAppViewContainer"] {
+        overflow-x: hidden;
+    }
+
+    /* Baris yang berisi kartu metrik (4 KPI dan panel detail kab/kota): 2 kolom x 2 baris,
+       bukan ditumpuk satu per satu. */
+    [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"]) {
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+    }
+    [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"]) > [data-testid="stColumn"],
+    [data-testid="stHorizontalBlock"]:has([data-testid="stMetric"]) > [data-testid="column"] {
+        flex: 1 1 calc(50% - 0.5rem) !important;
+        min-width: calc(50% - 0.5rem) !important;
+        width: calc(50% - 0.5rem) !important;
+    }
+    /* Label kartu panjang (mis. "Peringkat Kemiskinan (terendah = 1)") boleh turun baris */
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricLabel"] p {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        line-height: 1.2;
+    }
+
+    /* Tombol unduh selebar layar agar mudah diketuk */
+    div.stDownloadButton > button {
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+    }
+
+    /* Kotak info/peringatan: teks lebih kecil dan padding lebih ringkas */
+    [data-testid="stNotification"],
+    [data-testid="stAlert"] {
+        font-size: 0.85rem;
+    }
+    [data-testid="stNotification"] p,
+    [data-testid="stAlert"] p {
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    /* Grafik Plotly tidak boleh melebihi lebar layar */
+    [data-testid="stPlotlyChart"],
+    [data-testid="stPlotlyChart"] > div,
+    [data-testid="stPlotlyChart"] .js-plotly-plot,
+    [data-testid="stPlotlyChart"] .plotly-graph-div {
+        max-width: 100% !important;
+    }
+
+    /* Kotak pembuka di tab Home */
+    .hero-home {
+        padding: 12px 14px !important;
+    }
+
+    /* Jarak antarblok kolom (kartu topik, footer) lebih rapat saat ditumpuk */
+    [data-testid="stHorizontalBlock"] {
+        gap: 0.6rem;
+    }
+
+    /* Badge teknologi di footer: rapat dan boleh turun baris */
+    div[style*="margin-top:1rem"] img {
+        height: 20px;
+        margin: 2px 2px;
+    }
+
+    /* Slider tahun: label tidak terpotong */
+    [data-testid="stSlider"] label p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ponsel kecil (<= 480px) */
+@media (max-width: 480px) {
+    h1 { font-size: 1.3rem !important; }
+    .stTabs [data-baseweb="tab"] { padding: 8px 10px; }
+    .stTabs [data-baseweb="tab"] p { font-size: 0.8rem; }
+    [data-testid="stMetricValue"] { font-size: 1.2rem; }
+    [data-testid="stMetricLabel"] p { font-size: 0.75rem; }
+}

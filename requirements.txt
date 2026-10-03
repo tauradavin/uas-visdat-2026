@@ -1,0 +1,6 @@
+streamlit>=1.37
+pandas
+numpy
+geopandas
+plotly>=5.24,<7
+pillow
